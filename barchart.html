@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <title>Barchart</title>
+</head>
+<body>
+
+    <style>
+    .chart div {
+        font: 10px sans-serif;
+        background-color: steelblue;
+        text-align: right;
+        padding: 3px;
+        margin: 1px;
+        color: white;
+    }
+    </style>
+
+
+    <div class="chart"></div>
+
+    <script type='text/javascript'>
+
+        const data = [4, 8, 15, 16, 23, 42];
+
+        const chart = d3.select('.chart')
+        
+        const scaler = d3.scaleLinear()
+            .domain([0, d3.max(data)])
+            .range([0, 420])
+
+        chart
+            .selectAll('div') // this is selecting all divs that *will be* contained within the chart element
+                .data(data) // the data join
+            .enter().append("div")
+                .style('width', d => Math.floor(scaler(d)) + 'px')
+                .text(d => scaler(d))
+
+
+        
+    </script>
+
+</body>
+</html>
