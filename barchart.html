@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,20 +9,21 @@
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <title>Barchart</title>
 </head>
+
 <body>
 
     <style>
-    .chart div {
-        font: 10px sans-serif;
-        background-color: steelblue;
-        text-align: right;
-        padding: 3px;
-        margin: 1px;
-        color: white;
-    }
+        .chart div {
+            font: 10px sans-serif;
+            background-color: steelblue;
+            text-align: right;
+            padding: 3px;
+            margin: 1px;
+            color: white;
+        }
     </style>
 
-
+    <svg class='svg-chart'></svg>
     <div class="chart"></div>
 
     <script type='text/javascript'>
@@ -29,7 +31,7 @@
         const data = [4, 8, 15, 16, 23, 42];
 
         const chart = d3.select('.chart')
-        
+
         const scaler = d3.scaleLinear()
             .domain([0, d3.max(data)])
             .range([0, 420])
@@ -41,9 +43,47 @@
                 .style('width', d => Math.floor(scaler(d)) + 'px')
                 .text(d => scaler(d))
 
+        // const data = [
+        //     { name: "Locke", value: 4 },
+        //     { name: "Reyes", value: 8 },
+        //     { name: "Ford", value: 15 },
+        //     { name: "Jarrah", value: 16 },
+        //     { name: "Shephard", value: 23 },
+        //     { name: "Kwon", value: 42 }
+        // ];
 
-        
+        // const [width, barHeight] = [420, 20]
+
+        // const scaler = d3.scaleLinear()
+        //     .domain([0, d3.max(data)])
+        //     .range([0, width])
+
+        // const chart = d3.select('.chart')
+        //     .attr("width", width)
+        //     .attr("height", barHeight * data.length)
+
+        // const bar = chart.selectAll('g')
+        //     .data(data)
+        //     .enter().append('g')
+        //     .attr('transform', (d, i) => `translate(0, ${i * barHeight})`)
+
+        // bar.append('rect')
+        //     .attr('width', scaler)
+        //     .attr('height', barHeight - 1)
+
+        // bar.append('text')
+        //     .attr('x', (d) => d - 3)
+        //     .attr('y', barHeight / 2)
+        //     .attr('dy', '0.35em')
+        //     .text(d => d)
+
+        // function type(d) {
+        //     d.value = +d.value; // coerce to number
+        //     return d;
+        // }
+
     </script>
 
 </body>
+
 </html>
